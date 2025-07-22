@@ -7,14 +7,53 @@ import LoginPage from './components/Login';
 import ProblemsPage from './ProblemsPage';
 import SubmissionsPage from './SubmissionsPage';
 import SolveProblemPage from './SolveProblemPage';
-import FacultyDashboard from './faculty/FacultyDashboard';
+import FacultyDashboard from './faculty/FacultyDashboard'; // Adjust path if necessary
+
+// Announcements component
+function Announcements({ announcements }) {
+  if (!announcements || announcements.length === 0) return null;
+  return (
+    <div className="announcements-card">
+      <h4>📢 Latest Announcements</h4>
+      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+        {announcements.map(a => (
+          <li key={a.id} className="announce-item">
+            <div className="announce-title">{a.title}</div>
+            <div className="announce-msg">{a.message}</div>
+            <div className="announce-date">{a.date}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function App() {
+  // ---- Auth & User State ----
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+
+  // ---- Student UI State ----
   const [activeSection, setActiveSection] = useState('home');
   const [showProfileDetails, setShowProfileDetails] = useState(false);
 
+  // Announcements State
+  const [announcements, setAnnouncements] = useState([
+    {
+      id: 1,
+      title: "Platform Maintenance",
+      message: "The site will be under maintenance this Sunday, 1–3am.",
+      date: "2024-07-21"
+    },
+    {
+      id: 2,
+      title: "New Problem Added",
+      message: "Try the newly added 'Binary Tree Paths' challenge!",
+      date: "2024-07-20"
+    }
+  ]);
+
+  // ---- Example Problems/Leaderboard/Submissions State ----
   const [problems, setProblems] = useState([
     {
       id: 1,
@@ -33,25 +72,23 @@ function App() {
       testCases: [ {}, {}, {}, {}, {} ]
     }
   ]);
-
   const leaderboard = [
     { id: 2, name: 'Alice', marks: 93, avatar: '', },
     { id: 1, name: 'Bob', marks: 79, avatar: '', },
     { id: 3, name: 'Charlie', marks: 66, avatar: '', }
   ];
-
   const submissions = [
     { userId: 1, problemTitle: 'Two Sum', status: 'Accepted', language: 'Python', time: '2024-07-20T10:00:00Z', code: 'print("dummy")' },
     { userId: 1, problemTitle: 'Merge Sorted Lists', status: 'Wrong Answer', language: 'C++', time: '2024-07-19T18:12:00Z', code: '// C++ solution' }
   ];
 
+  // ---- Auth Handlers ----
   const handleLogin = (user) => {
     setIsLoggedIn(true);
     setUserInfo(user);
     setActiveSection('home');
     setShowProfileDetails(false);
   };
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserInfo(null);
@@ -60,22 +97,30 @@ function App() {
     setShowProfileDetails(false);
   };
 
+  // ---- Content Renderer for Student ----
   const renderDashboardContent = () => {
     switch (activeSection) {
       case 'home':
         return (
-          <div className="welcome-section">
-            <div>
-              <h1>Welcome, {userInfo?.name || 'Student'}!</h1>
-              <p>Dive into coding challenges and enhance your skills.</p>
+          <>
+            <div className="welcome-section">
+              <div>
+                <h1>Welcome, {userInfo?.name || 'Student'}!</h1>
+                <p>Dive into coding challenges and enhance your skills.</p>
+              </div>
+              <img src="https://iare-data.s3.ap-south-1.amazonaws.com/uploads/STUDENTS/23951A66F7/23951A66F7.jpg" alt="User Avatar"/>
             </div>
-            <img src="https://placehold.co/100x100/ffffff/000000?text=User" alt="User Avatar"/>
-          </div>
+            <Announcements announcements={announcements} />
+          </>
         );
       case 'problems':
-        return <ProblemsPage problems={problems} setProblems={setProblems} />;
+        return (
+          <ProblemsPage problems={problems} setProblems={setProblems} />
+        );
       case 'submissions':
-        return <SubmissionsPage userInfo={userInfo} leaderboard={leaderboard} submissions={submissions} />;
+        return (
+          <SubmissionsPage userInfo={userInfo} leaderboard={leaderboard} submissions={submissions} />
+        );
       case 'profile':
         return (
           <div className="dashboard-card">
@@ -117,19 +162,22 @@ function App() {
     }
   };
 
+  // ---- User Not Logged In ----
   if (!isLoggedIn) {
     return <LoginPage onLoginSuccess={handleLogin} />;
   }
 
-  // ✅ Updated condition to check for "teacher" only
-  if (userInfo?.role === 'teacher') {
+  // ---- Faculty View ----
+  if (userInfo?.role === 'faculty' || userInfo?.role === 'teacher') {
     return <FacultyDashboard userInfo={userInfo} />;
   }
 
+  // ---- Student View ----
   return (
     <BrowserRouter>
       <div className="dashboard-container">
         <Routes>
+          {/* Main Dashboard with Navbar */}
           <Route
             path="/"
             element={
@@ -137,11 +185,36 @@ function App() {
                 <nav className="navbar">
                   <div className="navbar-brand">PROJECT-IARE</div>
                   <div className="navbar-links">
-                    <button onClick={() => setActiveSection('home')} className={`navbar-link${activeSection === 'home' ? ' active' : ''}`}>Home</button>
-                    <button onClick={() => setActiveSection('problems')} className={`navbar-link${activeSection === 'problems' ? ' active' : ''}`}>Problems</button>
-                    <button onClick={() => setActiveSection('submissions')} className={`navbar-link${activeSection === 'submissions' ? ' active' : ''}`}>Submissions</button>
-                    <button onClick={() => setActiveSection('profile')} className={`navbar-link${activeSection === 'profile' ? ' active' : ''}`}>Profile</button>
-                    <button onClick={handleLogout} className="navbar-logout-btn">Logout</button>
+                    <button
+                      onClick={() => setActiveSection('home')}
+                      className={`navbar-link${activeSection === 'home' ? ' active' : ''}`}
+                    >
+                      Home
+                    </button>
+                    <button
+                      onClick={() => setActiveSection('problems')}
+                      className={`navbar-link${activeSection === 'problems' ? ' active' : ''}`}
+                    >
+                      Problems
+                    </button>
+                    <button
+                      onClick={() => setActiveSection('submissions')}
+                      className={`navbar-link${activeSection === 'submissions' ? ' active' : ''}`}
+                    >
+                      Submissions
+                    </button>
+                    <button
+                      onClick={() => setActiveSection('profile')}
+                      className={`navbar-link${activeSection === 'profile' ? ' active' : ''}`}
+                    >
+                      Profile
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="navbar-logout-btn"
+                    >
+                      Logout
+                    </button>
                   </div>
                 </nav>
                 <div className="dashboard-content-area">
@@ -150,8 +223,23 @@ function App() {
               </>
             }
           />
-          <Route path="/solve/:problemId" element={<SolveProblemPage problems={problems} userInfo={userInfo} />} />
-          <Route path="*" element={<div style={{ padding: 40 }}><h2>404 — Page Not Found</h2></div>} />
+          {/* Problem Solver Page */}
+          <Route
+            path="/solve/:problemId"
+            element={
+              <SolveProblemPage problems={problems} userInfo={userInfo} />
+            }
+          />
+          {/* Fallback route */}
+          <Route
+            path="*"
+            element={
+              <div style={{ padding: 40 }}>
+                <h2>404 — Page Not Found</h2>
+                <button onClick={() => setActiveSection('home')} className="navbar-link">Go Home</button>
+              </div>
+            }
+          />
         </Routes>
       </div>
     </BrowserRouter>
