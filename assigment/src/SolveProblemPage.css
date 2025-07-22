@@ -73,6 +73,7 @@
   padding: 6px 16px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.18s;
 }
 .panel-tabs .active {
   background: #725cad;
@@ -125,4 +126,52 @@
   padding: 13px 20px;
   font-size: 1em;
   margin-bottom: 10px;
+}
+
+/* Modern Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  margin-top: 6px;
+  padding: 9px 30px;
+  background: linear-gradient(90deg, #e8e6fa 0%, #fff3e5 100%);
+  color: #725cad;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.13em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 14px #e8dbfaf0;
+  letter-spacing: .05em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.18s;
+  position: relative;
+}
+
+.back-btn:hover, .back-btn:focus {
+  background: linear-gradient(90deg, #725cad 0%, #fea7a7 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px #b3a3eb63;
+  outline: none;
+}
+
+.back-btn .arrow {
+  font-size: 1.1em;
+  transition: margin-left 0.14s;
+}
+
+.back-btn:hover .arrow {
+  margin-left: -2px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .solve-problem-page-root { height: auto; }
+  .split-panel { flex-direction: column; }
+  .left-question-panel, .right-editor-panel {
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 2px 10px #ddd;
+  }
+  .right-editor-panel { border-radius: 0 0 15px 15px; }
 }
