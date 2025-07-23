@@ -27,6 +27,7 @@ body {
 
 .navbar-brand {
   font-size: 24px;
+  image-size: 10px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 2px;
@@ -267,4 +268,34 @@ body {
   .dashboard-card {
     padding: 12px;
   }
+}
+.announcements-card {
+  background: #fff8e1;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px #f6e37943;
+  margin: 32px auto 0 auto;
+  max-width: 850px;
+  padding: 16px 30px 12px 30px;
+  border-left: 7px solid #fdc23e;
+  font-family: "Inter", sans-serif;
+}
+.announcements-card h4 {
+  margin-top: 0; color: #a87d13; letter-spacing: 1px; margin-bottom: 14px;
+}
+.announce-item {
+  margin-bottom: 14px;
+  padding: 6px 0 8px 0;
+  border-bottom: 1px solid #fff3cc;
+}
+.announce-title {
+  font-weight: 700;
+  color: #cf9803;
+  font-size: 1.07em;
+}
+.announce-msg {
+  font-size: 1em; color: #574402; line-height: 1.35;
+}
+.announce-date {
+  font-size: .92em;
+  color: #ccb16b;
 }

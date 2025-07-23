@@ -1,71 +1,54 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./ProblemsPage.css"; // Assuming you have this file for styling the card list
 
 function ProblemsPage({ problems }) {
   const navigate = useNavigate();
 
+  // A message to show if there are no problems
+  if (!problems || problems.length === 0) {
+    return (
+      <div className="problems-container-background">
+        <div className="problems-card-wrapper">
+          <h2 className="problems-list-header">Problems List</h2>
+          <p className="no-problems-text">No problems are available at the moment.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const handleSolveClick = (problemId) => {
+    // Navigate with a state to trigger exam mode
+    navigate(`/solve/${problemId}`, { state: { examMode: true } });
+  };
+
   return (
-    <div className="dashboard-card">
-      <h2 style={{ marginBottom: 18 }}>Problems List</h2>
-      <table style={{ width: "100%", borderCollapse: "collapse", background: "#fff" }}>
-        <thead>
-          <tr style={{ background: "#efeaea", textAlign: "left" }}>
-            <th style={{ padding: 10 }}>Title</th>
-            <th style={{ padding: 10 }}>Difficulty</th>
-            <th style={{ padding: 10 }}>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="problems-container-background">
+      <div className="problems-card-wrapper">
+        <h2 className="problems-list-header">Problems List</h2>
+        <div className="problems-grid">
           {problems.map((problem) => (
-            <tr key={problem.id} style={{ borderBottom: "1px solid #f4f4f4" }}>
-              <td style={{ padding: 10 }}>{problem.title}</td>
-              <td style={{ padding: 10 }}>
+            <div className="problem-item-card" key={problem.id}>
+              <div className="problem-details">
+                <h3 className="problem-title">{problem.title}</h3>
                 <span
-                  style={{
-                    padding: "6px 18px",
-                    borderRadius: 20,
-                    background:
-                      problem.difficulty === "Easy"
-                        ? "#6ee7b7"
-                        : problem.difficulty === "Medium"
-                        ? "#fde68a"
-                        : "#fca5a5",
-                    color:
-                      problem.difficulty === "Easy"
-                        ? "#065f46"
-                        : problem.difficulty === "Medium"
-                        ? "#92400e"
-                        : "#b91c1c",
-                    fontWeight: 600
-                  }}
+                  className={`difficulty-tag ${
+                    problem.difficulty?.toLowerCase()
+                  }`}
                 >
                   {problem.difficulty}
                 </span>
-              </td>
-              <td style={{ padding: 10 }}>
-                <button
-                  style={{
-                    background: "#725cad",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: 16,
-                    fontWeight: 600,
-                    padding: "8px 26px",
-                    cursor: "pointer",
-                    fontSize: 15
-                  }}
-                  onClick={() => navigate(`/solve/${problem.id}`)}
-                >
-                  Solve
-                </button>
-              </td>
-            </tr>
+              </div>
+              <button
+                className="solve-action-button"
+                onClick={() => handleSolveClick(problem.id)}
+              >
+                Solve
+              </button>
+            </div>
           ))}
-        </tbody>
-      </table>
-      {problems.length === 0 && (
-        <div style={{ marginTop: 22 }}>No problems available.</div>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

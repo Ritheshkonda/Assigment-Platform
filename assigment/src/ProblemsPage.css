@@ -1,222 +1,121 @@
-/* ProblemsPage.css */
-
-.problems-section-container {
-  padding: 16px; /* p-4 */
-  background-color: #f9fafb; /* bg-gray-50 */
-  border-radius: 12px; /* rounded-xl */
-}
-
-.problems-section-title {
-  font-size: 30px; /* text-3xl */
-  font-weight: 700; /* font-bold */
-  margin-bottom: 24px; /* mb-6 */
-  color: #1f2937; /* text-gray-800 */
-  text-align: center;
-}
-
-.add-problem-button-wrapper {
-  margin-bottom: 32px; /* mb-8 */
-  text-align: center; /* to center the button */
-}
-
-.add-problem-button {
-  background-color: #22c55e; /* bg-green-500 */
-  color: white;
-  padding: 8px 24px; /* py-2 px-6 */
-  border-radius: 8px; /* rounded-lg */
-  font-size: 18px; /* text-lg */
-  transition: background-color 0.2s ease-in-out;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: none;
-  cursor: pointer;
-}
-
-.add-problem-button:hover {
-  background-color: #16a34a; /* hover:bg-green-600 */
-}
-
-.add-problem-form-card {
-  background-color: #ffffff; /* bg-white */
-  padding: 24px; /* p-6 */
-  border-radius: 12px; /* rounded-xl */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* shadow-md */
-  border: 1px solid #e5e7eb; /* border border-gray-200 */
-  margin-bottom: 32px; /* mb-8 */
-}
-
-.add-problem-form-card h3 {
-  font-size: 20px; /* text-xl */
-  font-weight: 600; /* font-semibold */
-  margin-bottom: 16px; /* mb-4 */
-  color: #1f2937; /* text-gray-800 */
-}
-
-.form-layout {
+/* Sets the overall background color and centers the content */
+.problems-container-background {
+  background-color: #fff3cd; /* Soft yellow theme background */
+  min-height: 100vh;
+  padding: 48px 24px;
   display: flex;
-  flex-direction: column;
-  gap: 16px; /* space-y-4 */
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.form-group {
-  /* No specific styles needed here, gap in form-layout handles spacing */
-}
-
-.form-label {
-  display: block;
-  font-size: 14px; /* text-sm */
-  font-weight: 500; /* font-medium */
-  color: #374151; /* text-gray-700 */
-  margin-bottom: 4px; /* mb-1 */
-}
-
-.form-input,
-.form-select,
-.form-textarea {
+/* The main container card that holds the list */
+.problems-card-wrapper {
+  background-color: #fff9e8;
+  border-radius: 18px;
+  padding: 28px 32px;
   width: 100%;
-  padding: 12px; /* p-3 */
-  border: 1px solid #d1d5db; /* border border-gray-300 */
-  border-radius: 8px; /* rounded-lg */
-  font-size: 16px; /* text-base */
-  outline: none;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #fdeec9;
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  border-color: #3b82f6; /* focus:ring-blue-500 */
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:ring-2 */
+.problems-list-header {
+  font-size: 2em;
+  font-weight: 700;
+  color: #4b3f1a;
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 
-.form-submit-button {
-  width: 100%;
-  background-color: #2563eb; /* bg-blue-600 */
-  color: white;
-  padding: 12px 24px; /* py-3 px-6 */
-  border-radius: 8px; /* rounded-lg */
-  font-size: 18px; /* text-lg */
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: none;
-}
-
-.form-submit-button:hover {
-  background-color: #1d4ed8; /* hover:bg-blue-700 */
-}
-
+/* Grid layout for the problem cards */
 .problems-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-  gap: 24px; /* gap-6 */
+  grid-template-columns: 1fr; /* Default to one column for mobile */
+  gap: 16px;
 }
 
-.problem-card {
-  background-color: #ffffff; /* bg-white */
-  padding: 16px 24px; /* Adjusted padding for better horizontal layout */
-  border-radius: 12px; /* rounded-xl */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* shadow-md */
-  border: 1px solid #e5e7eb; /* border border-gray-200 */
-  display: flex; /* Flex container */
-  align-items: center; /* Vertically center items */
-  justify-content: space-between; /* Distribute space between items */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: 16px; /* Gap between items inside the card */
+/* Individual card for each problem */
+.problem-item-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f0e9d6;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.problem-card-info {
+.problem-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(128, 112, 76, 0.1);
+}
+
+.problem-details {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow info section to grow */
+  gap: 8px;
 }
 
-.problem-card h3 {
-  font-size: 20px; /* text-xl */
-  font-weight: 600; /* font-semibold */
-  margin-bottom: 4px; /* Small margin below title */
-  color: #1f2937; /* text-gray-800 */
-  white-space: nowrap; /* Prevent title from wrapping */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
+.problem-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
 }
 
-.problem-difficulty {
-  font-size: 14px; /* text-sm */
-  font-weight: 550; /* font-medium */
-  margin-bottom: 0; /* No margin below difficulty */
-  white-space: nowrap; /* Prevent difficulty from wrapping */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
+/* Styles for the difficulty tags */
+.difficulty-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  font-weight: 600;
+  width: fit-content;
 }
 
-.difficulty-easy {
-  color: #16a34a; /* text-green-600 */
+.difficulty-tag.easy {
+  background-color: #d1fae5;
+  color: #065f46;
 }
 
-.difficulty-medium {
-  color: #eab308; /* text-yellow-600 */
+.difficulty-tag.medium {
+  background-color: #fef3c7;
+  color: #92400e;
 }
 
-.difficulty-hard {
-  color: #dc2626; /* text-red-600 */
+.difficulty-tag.hard {
+  background-color: #fee2e2;
+  color: #991b1b;
 }
 
-.problem-description {
-  display: none; /* Hide the description as requested */
-}
-
-.solve-button {
-  width: 120px; /* Decreased width to a fixed value */
-  background-color: #3b82f6; /* bg-blue-500 */
+/* The "Solve" button */
+.solve-action-button {
+  background-color: #7c3aed; /* Purple accent color */
   color: white;
-  padding: 4px 8px; /* Padding remains the same as last update */
-  border-radius: 4px; /* Border-radius remains the same as last update */
-  font-size: 15px; /* Font-size remains the same as last update */
-  transition: background-color 0.2s ease-in-out;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: none;
+  padding: 10px 24px;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  flex-shrink: 0; /* Prevent button from shrinking */
-  margin-left: auto; /* Push button to the right */
+  transition: background-color 0.2s;
 }
 
-.solve-button:hover {
-  background-color: #2563eb; /* hover:bg-blue-600 */
+.solve-action-button:hover {
+  background-color: #6d28d9;
 }
 
-.no-problems-message {
+.no-problems-text {
+  color: #856404;
   text-align: center;
-  color: #4b5563; /* text-gray-600 */
-  margin-top: 32px; /* mt-8 */
-  font-size: 16px;
+  padding: 40px 0;
+  font-size: 1.1em;
 }
 
-/* Updated style for vertical problems list to increase gap */
-.problems-list-vertical {
-  display: flex;
-  flex-direction: column; /* Arranges items vertically */
-  gap: 40px; /* Increased space between problem cards */
-}
-
-/* Media query for smaller screens to stack elements if needed */
-@media (max-width: 768px) { /* Adjusted breakpoint for better responsiveness */
-  .problem-card {
-    flex-direction: column; /* Stack elements vertically on small screens */
-    align-items: flex-start; /* Align text to the start */
-    padding: 16px; /* Adjust padding for smaller screens */
-  }
-  .problem-card-info {
-    width: 100%; /* Take full width */
-  }
-  .problem-card h3,
-  .problem-difficulty {
-    white-space: normal; /* Allow text to wrap on smaller screens */
-    overflow: visible; /* Show full text */
-    text-overflow: clip; /* No ellipsis */
-  }
-  .solve-button {
-    margin-top: 16px; /* Add some top margin when stacked */
-    width: 100%; /* Make button full width when stacked */
-    margin-left: 0; /* Reset margin */
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+  .problems-grid {
+    grid-template-columns: repeat(1, 1fr); /* One column for tablets and desktops */
   }
 }

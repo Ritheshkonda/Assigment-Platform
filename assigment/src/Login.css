@@ -1,201 +1,191 @@
-/* Login.css */
-
-/* Base styles for the body and font */
+/* Base */
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif; /* Using Inter font */
-  background: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  background: #4A4A5A;
 }
 
-/* Styles for the main login container */
+/* Login container */
 .login-container {
+  min-height: 100vh;
+  background-color: #4A4A5A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Combined login wrapper (left + right panels) */
+.login-box-wrapper {
+  display: flex;
+  background-color: #2E2E3E;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* Left panel with image and quote */
+.login-left-panel {
+  background-color: #3F3F5A;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 40px;
-  min-height: 100vh;
-  background-color: #f3f4f6; /* bg-gray-100 */
 }
 
-/* Styles for the login box (white card) */
-.login-box {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* shadow-lg */
-  border-radius: 10px; /* rounded-xl */
-  overflow: hidden;
-  max-width: 900px; /* max-w-4xl */
-  width: 100%;
-}
-
-/* Styles for the image section in the login box */
 .login-image {
-  flex: 1;
-  min-width: 300px;
-  background: #f3f4f6; /* bg-gray-100 */
-}
-
-.login-image img {
   width: 100%;
-  height: 100%;
+  max-height: 300px;
   object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-/* Styles for the login form section */
-.login-form {
+.login-quote {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Right panel (form area) */
+.login-right-panel {
   flex: 1;
-  padding: 40px; /* p-10 */
-  min-width: 300px;
+  padding: 40px;
+  background-color: #2E2E3E;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Heading for the login form */
-.login-form h2 {
-  margin-bottom: 24px; /* mb-6 */
-  font-size: 30px; /* text-3xl */
-  font-weight: 600; /* font-semibold */
-  color: #1f2937; /* text-gray-800 */
+.login-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-/* Input fields */
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .input-field {
-  width: 100%;
-  padding: 12px; /* p-3 */
-  margin: 8px 0; /* my-2 */
-  border: 1px solid #d1d5db; /* border border-gray-300 */
-  border-radius: 8px; /* rounded-lg */
-  font-size: 16px; /* text-base */
-  outline: none; /* focus:outline-none */
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3A3A4A;
+  color: white;
+  font-size: 16px;
+}
+
+.input-field::placeholder {
+  color: #aaa;
 }
 
 .input-field:focus {
-  border-color: #3b82f6; /* focus:ring-blue-500 */
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:ring-2 */
+  outline: 2px solid #6C5DD3;
+  background-color: #4b4b5a;
 }
 
-/* Login options (checkbox and forgot password) */
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px; /* mb-5 */
-  font-size: 14px; /* text-sm */
-  color: #4b5563; /* text-gray-700 */
+/* Forgot password */
+.forgot-password {
+  text-align: right;
+  font-size: 13px;
 }
 
-.login-options label {
-  display: flex;
-  align-items: center;
-}
-
-.login-options input[type="checkbox"] {
-  margin-right: 8px; /* mr-2 */
-  border-radius: 4px; /* rounded */
-}
-
-.login-options a {
-  color: #2563eb; /* text-blue-600 */
+.forgot-password a {
+  color: #a177ff;
   text-decoration: none;
 }
 
-.login-options a:hover {
+.forgot-password a:hover {
   text-decoration: underline;
 }
 
-/* Login button */
-.login-btn {
-  width: 100%;
-  padding: 12px; /* p-3 */
-  background-color: #2563eb; /* bg-blue-600 */
-  border: none;
+/* Login Button */
+.login-btn,
+.login-button {
+  padding: 12px;
+  background-color: #6C5DD3;
   color: white;
-  border-radius: 8px; /* rounded-lg */
-  font-size: 18px; /* text-lg */
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out; /* transition-colors duration-200 */
-}
-
-.login-btn:hover {
-  background-color: #1d4ed8; /* hover:bg-blue-700 */
-}
-
-/* Register text */
-.register-text {
-  text-align: center;
-  margin-top: 16px; /* mt-4 */
-  font-size: 14px; /* text-sm */
-  color: #4b5563; /* text-gray-700 */
-}
-
-.register-text a {
-  color: #2563eb; /* text-blue-600 */
-  text-decoration: none;
-}
-
-.register-text a:hover {
-  text-decoration: underline;
-}
-
-/* Footer styles */
-.login-footer {
-  margin-top: 32px; /* mt-8 */
-  text-align: center;
-  color: #4b5563; /* text-gray-600 */
-  font-size: 14px; /* text-sm */
-}
-
-.footer-icons {
-  margin-top: 8px; /* mt-2 */
-}
-
-.footer-icons a {
-  margin: 0 8px; /* mx-2 */
-  font-size: 18px; /* text-lg */
-  color: #4b5563; /* text-gray-600 */
-  text-decoration: none;
-  transition: color 0.2s ease-in-out; /* transition-colors duration-200 */
-}
-
-.footer-icons a:hover {
-  color: #2563eb; /* hover:text-blue-600 */
-}
-
-/* Social buttons (re-added for completeness, though simplified in HTML) */
-.social-buttons {
-  display: flex;
-  gap: 12px; /* gap-3 */
-  margin-bottom: 20px; /* mb-5 */
-}
-
-.social-btn {
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-  color: white;
+  font-size: 16px;
+  font-weight: 600;
   border: none;
-  border-radius: 50%;
+  border-radius: 8px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s;
 }
 
-.divider {
+.login-btn:hover,
+.login-button:hover {
+  background-color: #5941c6;
+}
+
+/* Role buttons (Student, Faculty, Admin) */
+.role-buttons {
   display: flex;
-  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.student-btn {
+  background-color: #2196F3;
+}
+.student-btn:hover {
+  background-color: #1976d2;
+}
+
+.faculty-btn {
+  background-color: #4CAF50;
+}
+.faculty-btn:hover {
+  background-color: #388E3C;
+}
+
+.admin-btn {
+  background-color: #FF9800;
+}
+.admin-btn:hover {
+  background-color: #FB8C00;
+}
+
+/* Error display */
+.login-error {
+  color: red;
   text-align: center;
-  margin: 20px 0; /* my-5 */
+  margin-top: 10px;
 }
-.divider::before,
-.divider::after {
-  content: '';
-  flex-grow: 1; /* flex-grow */
-  height: 1px; /* h-px */
-  background: #d1d5db; /* bg-gray-300 */
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .login-box-wrapper {
+    flex-direction: column;
+  }
+
+  .login-left-panel,
+  .login-right-panel {
+    border-radius: 0;
+  }
 }
-.divider span {
-  margin: 0 12px; /* mx-3 */
-  font-weight: bold;
-  color: #4b5563; /* text-gray-600 */
+.active-role {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(255, 255, 255, 0.2);
 }
