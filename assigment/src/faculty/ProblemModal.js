@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { useAppData } from './shared';
+import axios from '../api/axios'; // Make sure axios instance is correctly configured
 import { Plus, X } from 'lucide-react';
 
 export function ProblemModal({ problem, onClose }) {
-  const { addProblem, updateProblem } = useAppData();
   const [title, setTitle] = useState(problem?.title || '');
   const [description, setDescription] = useState(problem?.description || '');
   const [difficulty, setDifficulty] = useState(problem?.difficulty || 'Easy');
   const [testCases, setTestCases] = useState(
-    problem?.testCases && problem.testCases.length > 0
-      ? problem.testCases
-      : [{ input: '', output: '' }]
+    problem?.testCases?.length > 0 ? problem.testCases : [{ input: '', output: '' }]
   );
 
   const handleTestCaseChange = (index, field, value) => {
@@ -31,15 +28,32 @@ export function ProblemModal({ problem, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const problemData = { title, description, difficulty, testCases };
-    if (problem) {
-      updateProblem({ ...problem, ...problemData });
-    } else {
-      addProblem(problemData);
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await axios.post(
+        '/assignments/create',
+        {
+          title,
+          description,
+          difficulty,
+          testCases,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      alert('✅ Assignment created successfully!');
+      onClose();
+    } catch (error) {
+      console.error('❌ Assignment creation failed:', error);
+      alert('Error while creating assignment. See console for details.');
     }
-    onClose();
   };
 
   const handleContentClick = (e) => e.stopPropagation();
@@ -49,7 +63,6 @@ export function ProblemModal({ problem, onClose }) {
       <div className="problem-modal-content" onClick={handleContentClick}>
         <h3 className="modal-header-title">{problem ? "Edit Problem" : "Add New Problem"}</h3>
         <form onSubmit={handleSubmit} className="modal-form">
-          {/* This div will now be the scrollable container */}
           <div className="modal-form-content">
             <div className="form-group">
               <label htmlFor="title">Title</label>
