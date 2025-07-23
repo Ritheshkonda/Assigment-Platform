@@ -1,33 +1,14 @@
-// controllers/assignmentController.js
+// routes/assignmentRoutes.js
 
-const Assignment = require("../models/Assignment");
+const express = require("express");
+const router = express.Router();
+const { createAssignment, getAllAssignments } = require("../controllers/assignmentController");
+const { authMiddleware, requireRole } = require("../middleware/authMiddleware");
 
-exports.createAssignment = async (req, res) => {
-  try {
-    const { title, description, deadline, difficulty, testCases } = req.body;
+// Only teacher or admin can create assignment
+router.post("/create", authMiddleware, requireRole("teacher", "admin"), createAssignment);
 
-    const assignment = new Assignment({
-      title,
-      description,
-      difficulty,
-      deadline,
-      createdBy: req.user.id,
-      testCases,
-    });
+// All authenticated users can view assignments
+router.get("/all", authMiddleware, getAllAssignments);
 
-    await assignment.save();
-    res.status(201).json({ msg: "Assignment created", assignment });
-  } catch (err) {
-    console.error("❌ Error creating assignment:", err);
-    res.status(500).json({ msg: "Internal Server Error", error: err.message });
-  }
-};
-
-exports.getAllAssignments = async (req, res) => {
-  try {
-    const assignments = await Assignment.find().populate("createdBy", "name email role");
-    res.json(assignments);
-  } catch (err) {
-    res.status(500).json({ msg: "Failed to fetch assignments", error: err.message });
-  }
-};
+module.exports = router;
