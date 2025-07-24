@@ -1,0 +1,191 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #4A4A5A;
+}
+
+/* Login container */
+.login-container {
+  min-height: 100vh;
+  background-color: #4A4A5A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Combined login wrapper (left + right panels) */
+.login-box-wrapper {
+  display: flex;
+  background-color: #2E2E3E;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* Left panel with image and quote */
+.login-left-panel {
+  background-color: #3F3F5A;
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.login-quote {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Right panel (form area) */
+.login-right-panel {
+  flex: 1;
+  padding: 40px;
+  background-color: #2E2E3E;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3A3A4A;
+  color: white;
+  font-size: 16px;
+}
+
+.input-field::placeholder {
+  color: #aaa;
+}
+
+.input-field:focus {
+  outline: 2px solid #6C5DD3;
+  background-color: #4b4b5a;
+}
+
+/* Forgot password */
+.forgot-password {
+  text-align: right;
+  font-size: 13px;
+}
+
+.forgot-password a {
+  color: #a177ff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn,
+.login-button {
+  padding: 12px;
+  background-color: #6C5DD3;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover,
+.login-button:hover {
+  background-color: #5941c6;
+}
+
+/* Role buttons (Student, Faculty, Admin) */
+.role-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.student-btn {
+  background-color: #2196F3;
+}
+.student-btn:hover {
+  background-color: #1976d2;
+}
+
+.faculty-btn {
+  background-color: #4CAF50;
+}
+.faculty-btn:hover {
+  background-color: #388E3C;
+}
+
+.admin-btn {
+  background-color: #FF9800;
+}
+.admin-btn:hover {
+  background-color: #FB8C00;
+}
+
+/* Error display */
+.login-error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .login-box-wrapper {
+    flex-direction: column;
+  }
+
+  .login-left-panel,
+  .login-right-panel {
+    border-radius: 0;
+  }
+}
+.active-role {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(255, 255, 255, 0.2);
+}

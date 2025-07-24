@@ -1,0 +1,121 @@
+/* Sets the overall background color and centers the content */
+.problems-container-background {
+  background-color: #fff3cd; /* Soft yellow theme background */
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* The main container card that holds the list */
+.problems-card-wrapper {
+  background-color: #fff9e8;
+  border-radius: 18px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #fdeec9;
+}
+
+.problems-list-header {
+  font-size: 2em;
+  font-weight: 700;
+  color: #4b3f1a;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Grid layout for the problem cards */
+.problems-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to one column for mobile */
+  gap: 16px;
+}
+
+/* Individual card for each problem */
+.problem-item-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f0e9d6;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.problem-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(128, 112, 76, 0.1);
+}
+
+.problem-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.problem-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+/* Styles for the difficulty tags */
+.difficulty-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.difficulty-tag.easy {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.difficulty-tag.medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.difficulty-tag.hard {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* The "Solve" button */
+.solve-action-button {
+  background-color: #7c3aed; /* Purple accent color */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.solve-action-button:hover {
+  background-color: #6d28d9;
+}
+
+.no-problems-text {
+  color: #856404;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 1.1em;
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+  .problems-grid {
+    grid-template-columns: repeat(1, 1fr); /* One column for tablets and desktops */
+  }
+}
