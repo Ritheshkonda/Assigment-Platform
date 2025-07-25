@@ -1,0 +1,139 @@
+/* ProblemsPage.css - Refactored with Dashboard Theme */
+
+/* Sets the overall background color to match the dashboard */
+.problems-container-background {
+  background-color: #000000; /* Matching the main dashboard background */
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* The main container card that holds the list, styled like a dashboard card */
+.problems-card-wrapper {
+  background-color: #b3b3b3; /* White card background */
+  border-radius: 12px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb; /* Light grey border */
+}
+
+.problems-list-header {
+  font-size: 2em;
+  font-weight: 700;
+  color: #111827; /* Darkest grey/black for main headings */
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Grid layout for the problem cards */
+.problems-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Individual card for each problem */
+.problem-item-card {
+  background-color: #f9fafb; /* Slightly off-white to stand out from the main card */
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb; /* Standard light grey border */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.problem-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Subtle grey shadow */
+}
+
+.problem-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.problem-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937; /* Dark grey for titles */
+}
+
+/* ---- STYLES FOR DIFFICULTY TAGS - MONOCHROME THEME ---- */
+.difficulty-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.difficulty-tag.easy {
+  border: 5px #28d945;
+  border-style: double; /* Medium Grey border */
+  background-color: #ffffff; /* Light Grey */
+  color: #000000;
+
+}
+
+.difficulty-tag.medium {
+border: 5px #d9b328;
+  border-style: double;
+  background-color: #ffffff; /* Medium Grey */
+  color: #000000;
+}
+
+.difficulty-tag.hard {
+  border: 5px #ff0000;
+  border-style: double;
+  background-color: #ffffff; /* Medium Grey */
+  color: #000000
+}
+
+/* The "Solve" button, styled like primary dashboard buttons */
+.solve-action-button {
+  background-color: #1f2937; /* Black button */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.solve-action-button:hover {
+  background-color: #374151; /* Darker grey on hover */
+}
+
+.no-problems-text {
+  color: #4b5563; /* Medium grey text color */
+  text-align: center;
+  padding: 40px 0;
+  font-size: 1.1em;
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+  .problems-grid {
+      grid-template-columns: 1fr;
+  }
+}
+.solved-tag {
+  background-color: #d2f5d2;
+  color: #237a23;
+  font-weight: bold;
+  padding: 3px 7px;
+  margin-left: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}

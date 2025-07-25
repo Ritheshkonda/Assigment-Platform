@@ -1,0 +1,15 @@
+.faculty-submissions-wrapper {
+    padding: 20px;
+  }
+  .submissions-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .submissions-table th, .submissions-table td {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  .submissions-table th {
+    background: #eee;
+  }
