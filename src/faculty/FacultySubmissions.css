@@ -1,0 +1,20 @@
+.faculty-submissions-wrapper {
+    padding: 20px;
+    color: rgb(29, 221, 51);
+  
+  }
+  .submissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: rgb(29, 221, 51);
+  }
+  .submissions-table th, .submissions-table td {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: #fff;
+  }
+  .submissions-table th {
+    background: #ffffff;
+    color:black;
+  }

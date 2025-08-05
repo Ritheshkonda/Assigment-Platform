@@ -1,0 +1,194 @@
+/* ProblemsPage.css - Updated for 15-Week Lab Structure */
+
+/* Overall background */
+.problems-container-background {
+  background-color: #000000; /* Dark dashboard background */
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main card wrapper */
+.problems-card-wrapper {
+  background-color: #ffffff; /* White card background */
+  border-radius: 12px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+/* Page header */
+.problems-list-header {
+  font-size: 2em;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Accordion for weeks */
+.week-accordion {
+  margin-bottom: 16px;
+}
+
+.week-header {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.week-header:hover {
+  background-color: #f3f4f6;
+}
+
+.week-title {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.week-deadline {
+  font-size: 0.95em;
+  color: #6b7280;
+}
+
+.week-content {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background-color: #ffffff;
+}
+
+/* Disabled state */
+.week-disabled .week-header {
+  background-color: #fee2e2;
+  cursor: not-allowed;
+}
+
+.week-disabled .week-deadline {
+  color: #b91c1c;
+}
+
+/* Problems grid inside week */
+.problems-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Individual problem card */
+.problem-item-card {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.problem-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.problem-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.problem-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937;
+}
+
+/* Difficulty tags (monochrome theme) */
+.difficulty-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.difficulty-tag.easy {
+  border: 5px double #28d945;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.difficulty-tag.medium {
+  border: 5px double #d9b328;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.difficulty-tag.hard {
+  border: 5px double #ff0000;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Solve button */
+.solve-action-button {
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.solve-action-button:hover {
+  background-color: #374151;
+}
+
+.solve-action-button:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* No problems text */
+.no-problems-text {
+  color: #4b5563;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 1.1em;
+}
+
+/* Solved tag */
+.solved-tag {
+  background-color: #d2f5d2;
+  color: #237a23;
+  font-weight: bold;
+  padding: 3px 7px;
+  margin-left: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+}
