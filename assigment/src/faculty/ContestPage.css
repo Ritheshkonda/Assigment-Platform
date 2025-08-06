@@ -1,0 +1,42 @@
+/* src/pages/ContestPage.css */
+
+.contest-page {
+    padding: 1.5rem 2rem;
+  }
+  
+  .contest-page__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .contest-page__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+  
+  .contest-page__fab {
+    background: var(--primary, #1e88e5);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .contest-page__fab:hover {
+    filter: brightness(1.1);
+  }
+  
+  .contest-page__body {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 1rem;
+  }
+  
