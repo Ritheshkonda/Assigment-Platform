@@ -21,6 +21,11 @@ const protectedRoutes = require("./routes/protectedRoutes");
 const submissionRoutes = require("./routes/submissionRoutes");
 const assignmentRoutes = require("./routes/assignmentRoutes");
 const codeSubmissionRoutes = require("./routes/codeSubmissionRoutes");
+const adminRoutes = require('./routes/adminRoutes');
+const facultyRoutes = require('./routes/facultyRoutes');
+const studentRoutes = require('./routes/studentRoutes');
+
+
 
 
 
@@ -30,6 +35,9 @@ app.use("/api/protected", protectedRoutes);
 app.use("/api/submissions", submissionRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/code-submissions", codeSubmissionRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/faculty', facultyRoutes);
+app.use('/api/student', studentRoutes);
 
 // ✅ Test Route
 app.get("/", (req, res) => {
@@ -49,5 +57,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
-
 

@@ -205,8 +205,300 @@
 @keyframes modal-fade-in {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}/* General Dashboard Layout */
+.faculty-dashboard-root {
+  min-height: 100vh;
+  background: #000000;
+  font-family: 'Inter', Arial, sans-serif;
 }
 
+.faculty-tabs-bar {
+  margin: 0 auto;
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.faculty-tab-btn {
+  padding: 8px 28px;
+  font-size: 0.95em;
+  background: #111827;
+  color: #fff;
+  border: 1px solid #4b5563;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.faculty-tab-btn.active,
+.faculty-tab-btn:hover {
+  background: #0260f7;
+  color: #fff;
+  border-color: #0260f7;
+}
+
+.faculty-content-container {
+  margin: 0 auto;
+  margin-top: 32px;
+  max-width: 980px;
+  width: 96vw;
+}
+
+/* Main Card Styling */
+.faculty-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 30px rgba(31, 41, 55, 0.09);
+  padding: 24px 30px;
+  margin-bottom: 38px;
+}
+
+.faculty-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.faculty-card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #111827;
+}
+
+.faculty-action-btn {
+  border: none;
+  background: #0260f7;
+  color: #fff;
+  border-radius: 14px;
+  font-size: 1em;
+  padding: 10px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(2, 96, 247, 0.15);
+}
+
+.faculty-action-btn:hover {
+  box-shadow: 0 4px 15px rgba(2, 96, 247, 0.25);
+}
+
+/* Table Alignment and Styling (for Problems & Contests) */
+.problems-table-container, .contests-table-container {
+  width: 100%;
+}
+
+.problems-table-head, .problems-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  align-items: center;
+  padding: 12px 15px;
+  gap: 15px;
+}
+
+.contests-table-head, .contests-table-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+  padding: 12px 15px;
+  gap: 15px;
+}
+
+/* ---- CHANGED: Make header text white ---- */
+.problems-table-head,
+.contests-table-head {
+  background: #1f2937;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.problems-table-row, .contests-table-row {
+  border-bottom: 1px solid #4b5563;
+}
+
+.problems-table-row:last-child, .contests-table-row:last-child {
+  border-bottom: none;
+}
+
+.problem-title-main, .contest-name-main {
+  font-weight: 600;
+  color: #111827;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.diff-pill {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9em;
+  text-align: center;
+}
+.diff-pill.easy { background: #4b5563; }
+.diff-pill.medium { background: #4b5563; }
+.diff-pill.hard { background: #ff0000; }
+
+.faculty-row-btn {
+  background: #1f2937;
+  color: #fff;
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95em;
+  padding: 6px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.faculty-row-btn:hover {
+  background-color: #374151;
+  border-color: #0260f7;
+}
+
+.faculty-row-btn.danger {
+  background: #fff;
+  color: #ff0000;
+  border-color: #fcc2c2;
+}
+
+.faculty-row-btn.danger:hover {
+  background: #fed7d7;
+  border-color: #fbb6b6;
+}
+
+/* --- Modal Styles (Problem & Contest) --- */
+
+.faculty-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.problem-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(2, 96, 247, 0.06);
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.generate-btn {
+  background-color: #0260f7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.generate-btn:hover {
+  background-color: #1f2937;
+}
+
+.contest-problem-box {
+  background-color: #1f2937;
+  border: 1px solid #4b5563;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 80px;
+}
+
+.contest-problem-label {
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #111827;
+  color: #fff; /* was #0260f7 */
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #4b5563;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  font-size: 0.95em;
+}
+
+.contest-problem-label:hover {
+  background: #0260f7;
+  border-color: #0260f7;
+  color: #fff;
+}
+
+.contest-problem-label.selected {
+  background: #0260f7;
+  color: #fff;
+  border-color: #0260f7;
+}
+
+.selected-problems-display {
+  margin-top: 20px;
+  background-color: #1f2937;
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid #4b5563;
+}
+
+.selected-problems-display label {
+  font-weight: 700;
+  color: #fff; /* was #0260f7 */
+  margin-bottom: 8px;
+}
+
+.selected-problems-list-vertical {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selected-problem-item {
+  font-size: 1em;
+  color: #111827;
+  font-weight: 500;
+  padding: 8px 4px;
+  border-bottom: 1px solid #4b5563;
+  color:white;
+}
+
+.selected-problem-item:last-child {
+  border-bottom: none;
+}
 /* ---- CHANGED: Modal header text to white ---- */
 .modal-header-title {
   font-size: 1.6em;
@@ -409,89 +701,6 @@
   border-radius: 8px;
   font-size: 1em;
 }
-
-.generate-btn {
-  background-color: #0260f7;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.generate-btn:hover {
-  background-color: #1f2937;
-}
-
-.contest-problem-box {
-  background-color: #1f2937;
-  border: 1px solid #4b5563;
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  min-height: 80px;
-}
-
-.contest-problem-label {
-  padding: 8px 18px;
-  border-radius: 20px;
-  background: #111827;
-  color: #fff; /* was #0260f7 */
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #4b5563;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-  font-size: 0.95em;
-}
-
-.contest-problem-label:hover {
-  background: #0260f7;
-  border-color: #0260f7;
-  color: #fff;
-}
-
-.contest-problem-label.selected {
-  background: #0260f7;
-  color: #fff;
-  border-color: #0260f7;
-}
-
-.selected-problems-display {
-  margin-top: 20px;
-  background-color: #1f2937;
-  border-radius: 10px;
-  padding: 12px 16px;
-  border: 1px solid #4b5563;
-}
-
-.selected-problems-display label {
-  font-weight: 700;
-  color: #fff; /* was #0260f7 */
-  margin-bottom: 8px;
-}
-
-.selected-problems-list-vertical {
-  list-style-type: decimal;
-  list-style-position: inside;
-  padding-left: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.selected-problem-item {
-  font-size: 1em;
-  color: #111827;
-  font-weight: 500;
-  padding: 8px 4px;
-  border-bottom: 1px solid #4b5563;
-}
-
-.selected-problem-item:last-child {
-  border-bottom: none;
+.problems-table-head, .problems-table-row {
+  grid-template-columns: 2fr 1fr 1fr 1.5fr 2fr; /* Adjusted for the new column */
 }

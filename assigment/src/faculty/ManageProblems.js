@@ -62,6 +62,8 @@ export function ManageProblems() {
           <span>Title</span>
           <span>Difficulty</span>
           <span>Test Cases</span>
+          {/* New Column: Assignment Info */}
+          <span>Assignment Info</span>
           <span style={{ textAlign: 'center' }}>Actions</span>
         </div>
         <div className="problems-table-list">
@@ -72,6 +74,10 @@ export function ManageProblems() {
                 <span className={`diff-pill ${problem.difficulty?.toLowerCase()}`}>{problem.difficulty}</span>
               </span>
               <span className="test-cases-cell">{problem.testCases?.length || 0}</span>
+              {/* New: Display Batch, Week, Due Date */}
+              <span>
+                Batch: {problem.batch || 'N/A'} | Week: {problem.week || 'N/A'} | Due: {problem.dueDate ? new Date(problem.dueDate).toLocaleDateString() : 'N/A'}
+              </span>
               <span className="actions-cell">
                 <button className="faculty-row-btn" onClick={() => openModal(problem)}>
                   <Edit size={16} /> Edit

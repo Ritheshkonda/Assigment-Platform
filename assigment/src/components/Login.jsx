@@ -15,7 +15,7 @@ function LoginPage({ onLoginSuccess }) {
     try {
       const data = await loginUser(email, password, role); // send role to backend
       localStorage.setItem("token", data.token);
-      alert("Login Successful!");
+      
       onLoginSuccess(data.user);
     } catch (err) {
       setError("Login failed");
