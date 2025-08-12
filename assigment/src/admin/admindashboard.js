@@ -18,6 +18,11 @@ export default function AdminPage() {
   const [examples, setExamples] = useState([{ input: '', output: '', explanation: '' }]);
   const [newBatchName, setNewBatchName] = useState('');
 
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
+
   // ✅ Fetch questions from backend
   const fetchQuestions = async () => {
     try {
@@ -116,6 +121,12 @@ export default function AdminPage() {
 
   return (
     <div className="admin-page-root">
+      <button 
+  onClick={handleLogout} 
+  className="logout-btn"
+>
+  Logout
+</button>
       <div className="admin-content-container">
         <div className="admin-card">
           <div className="admin-card-title">Admin Page: Manage Questions by Batch</div>
@@ -149,6 +160,8 @@ export default function AdminPage() {
               Add Question
             </button>
           </div>
+          
+
 
           {/* Questions List */}
           {showQuestions && (
